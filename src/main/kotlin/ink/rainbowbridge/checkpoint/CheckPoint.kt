@@ -28,6 +28,7 @@ object CheckPoint : Plugin() {
                 LocalPlayer.get(sender).set("checkpoint","${sender.world.name},${sender.location.x},${sender.location.y},${sender.location.z}")
                 sender.sendMessage(ChatColor.GRAY.toString()+"已保存")
             }.build()
+    @TInject
     val d = CommandBuilder.create("d",plugin)
             .permission("checkpoint.d")
             .execute { sender, args ->
@@ -41,6 +42,6 @@ object CheckPoint : Plugin() {
                 }
                 sender.teleport(CronusParser.toBukkitLocation(LocalPlayer.get(sender).getString("checkpoint")))
                 sender.sendMessage(ChatColor.GRAY.toString()+"已回到检查点")
-            }
+            }.build()
 
 }
